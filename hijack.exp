@@ -1,0 +1,16 @@
+#!/usr/bin/expect
+
+set bulb [lindex $argv 0]
+set net [lindex $argv 1]
+set pass [lindex $argv 2]
+
+send_user "$bulb $net $pass"
+
+spawn ./main.sh $bulb $net
+
+expect "No --type defined, discovering..\r"
+expect "Password:\r"
+#send -- "$pass\n"
+# change the network password below
+send -- "password\n"
+expect eof

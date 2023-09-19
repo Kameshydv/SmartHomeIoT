@@ -51,4 +51,9 @@ echo "Seen at $start";
 echo "Stopped at $stop";
 
 #Task: print the time the bulb acts as an AP
+start_time=$(date -d "$start" +%s)
+stop_time=$(date -d "$stop" +%s)
+duration=$((stop_time - start_time))
+echo "The bulb acted as an AP for $duration seconds."
+
 exit;
